@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII: Globally Illuminated</title>
+
+  <!-- <script type="application/javascript">
+    window.mdxishState = {
+      startTime: new Date(),
+      scrollY: 0,
+    };
+    window.mdxref = (ref) => document.querySelector('[data-id="' + ref + '"]');
+  </script> -->  
+<!--   
+  <style>
+  </style>
+   <link rel="stylesheet" href="../css/mdxish.css"> <meta charset="UTF-8"> <meta name="description" content="An interactive walkthrough of implementing radiance cascades, a technique for real-time noiseless global illumination."> <meta name="og:description" content="A tiny globally illuminated ascii canvas."> <meta name="twitter:card" content="summary_large_image"> <meta property="og:title" content="Globally Illuminated Ascii Canvas"> <meta property="og:type" content="website"> <meta property="og:image" content="https://jason.today/img/ascii-gi.png"> <meta property="og:url" content="https://jason.today/ascii-gi"> <style> button { border: none; cursor: pointer; } .color { max-width: 20px; width: 20px; height: 20px; position: relative; } canvas { image-rendering: auto; } .iconButton { margin-left: -1px; padding: 0; width: 24px; height: 24px; padding-top: 4px; } .erase { position: absolute;  top: 2px; left: 1px; } .arrow { border: none; position: absolute;  top: 0; left: -17px; cursor: auto; color: var(--article-text-color); } .hidden { display: none; } </style>  -->
+
+<!-- Need to include main.js module with the proper types etc-->
+<script type="module" src="main.js"></script>
+
+</head>
+<body>
+  
+  <div id="content">
+    
+<p><a href="https://jason.today">jason.today</a></p>
+<h1 id="globally-illuminated-ascii">Globally Illuminated Ascii</h1>
+<p>Press whatever key (incl. symbols, capitals, etc.) you want to add to the scene. Set <code>width</code> and <code>height</code> query params in the url to change the size.</p>
+<div id="mobile-input"></div>
+    
+<span id="radiance-cascades-enabled"></span>
+<span id="falling-sand-enabled">
+
+<div id="bigger-canvas"></div>
+
+<div id="alpha-slider-container">
+<div style="display: flex; align-items: center; gap: 4px">
+<input type="checkbox" id="enable-srgb" checked>
+<label for="enable-srgb">2D SRGB Falloff</label>
+</div>
+<div style="display: flex; align-items: center; gap: 4px">
+<input type="checkbox" id="enable-painterly">
+<label for="enable-painterly">Painterly</label>
+</div>
+</div>
+
+<details style="cursor: pointer">
+<summary>Additional Controls</summary>
+
+<div style="display: none; align-items: center; gap: 4px;">
+<input type="checkbox" id="bilinear-fix">
+<label for="bilinear-fix">Bilinear Fix</label>
+</div>
+
+<div style="display: flex; align-items: center; gap: 4px;">
+<input type="checkbox" id="disable-mips">
+<label for="disable-mips">Disable Mips</label>
+</div>
+
+<div style="display: flex; align-items: center; gap: 4px;">
+<input type="checkbox" id="nonlinear-accumulation">
+<label for="nonlinear-accumulation">Non-Linear Accumulation</label>
+</div>
+
+<div style="display: flex; align-items: center; gap: 4px">
+<input type="checkbox" id="add-noise">
+<label for="add-noise">Naive GI Noise</label>
+</div>
+
+<div style="display: none; align-items: center; gap: 4px">
+<input type="checkbox" id="ringing-fix">
+<label for="ringing-fix">Ringing Fix</label>
+</div>
+
+<div id="radius-slider-container">
+</div>
+
+<div style="display: flex; align-items: center; gap: 8px">
+Sun Angle
+<input id="rc-sun-angle-slider" class="slider" type="range" min="0" max="6.2" step="0.1" value="2.0" />
+</div>
+
+<div style="display: flex; align-items: center; gap: 4px">
+<input type="checkbox" id="reduce-demand">
+<label for="reduce-demand">Reduce Demand (Calculate over 2 frames)</label>
+</div>
+
+</details>
+
+
+
+<br />
+
+<div id="rc-canvas"></div>
+<div id="rcv-canvas"></div>
+
+
+
+
+<p>Reference:</p>
+<p><a href="https://jason.today/gi">Building real-time global illumination</a></p>
+</div>
+</body>
+</html>
+
