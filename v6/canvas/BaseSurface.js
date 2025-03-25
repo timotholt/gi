@@ -87,7 +87,11 @@ export default class BaseSurface {
    * @returns {Promise} Resolves when animation completes
    */
   reset() {
+
+    // Clear the surface
     this.clear();
+
+    // Initialize variables
     let last = undefined;
     return new Promise((resolve) => {
       this.setHex("#f9a875");  // Orange color for main wall
@@ -165,7 +169,7 @@ export default class BaseSurface {
         // Handle alpha blending
         const alpha = a == 0 ? a : this.alpha;
         this.surface.currentColor = { r, g, b, a: alpha };
-        
+
         // Convert color to normalized WebGL format
         this.drawUniforms.color = [
           this.surface.currentColor.r / 255.0,
