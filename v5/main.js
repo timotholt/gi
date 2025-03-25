@@ -1,21 +1,8 @@
 // @run
 
-import { WebGL2MicroLayer, Pass, Pipeline, RenderTarget } from './webgl/index.js';
-import { GPUTimer} from './utils/gputimer.js';
-import { initializeCanvas, hexToRgb, rgbToHex } from './ui/canvasControls.js';
-import { addSlider } from './ui/slider.js';
-import { onBuildReload } from './webgl/ReloadShaders.js';
 import { isMobile } from './utils/device.js';
-import { webGlContext, webGlInit } from './webgl/context.js';
-import { instantMode, getFrame } from './utils/animation.js';
-import BaseSurface from './canvas/BaseSurface.js';
-import Drawing from "./canvas/Drawing.js";
 import VolumetricRC from './webgl/VolumetricRC.js';
-import JFA from './webgl/JFA.js';
-import DistanceField from './webgl/DistanceField.js';
-import GradientField from './webgl/GradientField.js';
 import NaiveRaymarchGi from './webgl/NaiveRaymarchGi.js';
-import rc_fragment from "./shaders/rc_shader.js";
 import RC from './webgl/RC.js';
 
 window.mdxishState = {
@@ -23,24 +10,6 @@ window.mdxishState = {
     scrollY: 0,
   };
 window.mdxref = (ref) => document.querySelector('[data-id="' + ref + '"]');
-
-
-
-const vertexShader = `
-in vec2 vUv;
-void main() {
-vUv = uv;
-gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}`;
-
-//======
-
-
-
-    //==============
-  
-//=============
-
 
 //============
 
