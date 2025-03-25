@@ -4,6 +4,7 @@ import { isMobile } from '../utils/device.js';
 import { getFrame } from '../utils/animation.js';
 import { onBuildReload } from '../webgl/ReloadShaders.js';
 import volumetric_rc_fragment from "../shaders/volumetric_rc_fragment_shader.js";
+import { addSlider } from '../ui/slider.js';
 
 class VolumetricRC extends Drawing {
     innerInitialize() {

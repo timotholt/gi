@@ -46,9 +46,18 @@ radius: 4 * dp,
 dpr: rcScale,
 canvasScale: rcScale / dp
 });
+} else if (classic) {
+window.radianceCascades = new RC({
+id: "rc-canvas",
+width: dp * width / rcScale,
+height: dp * height / rcScale,
+radius: 4 * dp,
+dpr: rcScale,
+canvasScale: rcScale / dp
+});
 } else {
 window.radianceCascades = new RC({
-id: "rcv-canvas",
+id: "rc-canvas",
 width: dp * width / rcScale,
 height: dp * height / rcScale,
 radius: 4 * dp,

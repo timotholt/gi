@@ -1,3 +1,6 @@
+// This renderer looks bad and is very slow
+// Use it only for testing
+
 import GradientField from './GradientField.js';
 import naive_raymarch_shader from "../shaders/naive_raymarch_shader.js";
 import { onBuildReload } from './ReloadShaders.js';
