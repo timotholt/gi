@@ -1,25 +1,30 @@
-import JFA from './JFA.js';
+import JFA from "./JFA.js";
 
 //=========
 
 // @run
 class DistanceField extends JFA {
-    innerInitialize() {
+  innerInitialize() {
     super.innerInitialize();
-    
-    const {stage: dfStage, uniforms: dfUniforms, render: dfRender, renderTargets: dfRenderTargets} = this.initWebGL2({
-    uniforms: {
-      resolution: [this.width, this.height],
-      jfaTexture: null,
-    },
-    renderTargetOverrides: {
-      minFilter: this.gl.NEAREST,
-      magFilter: this.gl.NEAREST,
-      internalFormat: this.gl.R16F,
-      format: this.gl.RED,
-      type: this.gl.HALF_FLOAT,
-    },
-    fragmentShader: `
+
+    const {
+      stage: dfStage,
+      uniforms: dfUniforms,
+      render: dfRender,
+      renderTargets: dfRenderTargets,
+    } = this.initWebGL2({
+      uniforms: {
+        resolution: [this.width, this.height],
+        jfaTexture: null,
+      },
+      renderTargetOverrides: {
+        minFilter: this.gl.NEAREST,
+        magFilter: this.gl.NEAREST,
+        internalFormat: this.gl.R16F,
+        format: this.gl.RED,
+        type: this.gl.HALF_FLOAT,
+      },
+      fragmentShader: `
       uniform sampler2D jfaTexture;
       uniform vec2 resolution;
     
@@ -35,40 +40,40 @@ class DistanceField extends JFA {
         FragColor = dist;
       }`,
     });
-    
+
     this.dfStage = dfStage;
     this.dfUniforms = dfUniforms;
     this.dfRender = dfRender;
     this.dfRenderTargets = dfRenderTargets;
     this.prev = 0;
     this.hasRendered = false;
-    }
-    
-    clear() {
+  }
+
+  clear() {
     if (this.initialized) {
-    this.dfRenderTargets.forEach((target) => {
-      this.renderer.setRenderTarget(target);
-      this.renderer.clear();
-    });
+      this.dfRenderTargets.forEach((target) => {
+        this.renderer.setRenderTarget(target);
+        this.renderer.clear();
+      });
     }
     super.clear();
-    }
-    
-    dfPass(inputTexture) {
+  }
+
+  dfPass(inputTexture) {
     this.dfUniforms.jfaTexture = inputTexture;
-    
+
     this.renderer.setRenderTarget(this.dfRenderTargets[0]);
     this.dfRender();
     return this.dfRenderTargets[0].texture;
-    }
-    
-    renderPass() {
+  }
+
+  renderPass() {
     let out = this.seedPass(this.drawPass());
     const jfaTexture = this.jfaPass(out);
     const distanceTexture = this.dfPass(jfaTexture);
     const gradientTexture = this.gfPass(distanceTexture);
     this.raymarchPass(this.drawPassTexture, gradientTexture, distanceTexture);
-    }
+  }
 }
 
 export default DistanceField;
