@@ -508,17 +508,16 @@ class RC extends GradientField {
             magFilter: this.gl.LINEAR,
           });
         }
-      // });
+      });
       this.rcUniforms.painterly = this.enablePainterly.checked;
       this.renderPass();
     });
-  });
     this.sunAngleSlider.addEventListener("input", () => {
       this.rcUniforms.sunAngle = this.sunAngleSlider;
       this.renderPass();
     });
     window.mdxishState.onReload = onBuildReload(this, "radianceCascades");
-      super.load();
+    super.load();
   }
 }
 
