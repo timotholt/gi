@@ -2,6 +2,8 @@
 
 import { WebGL2MicroLayer, Pass, Pipeline, RenderTarget } from './webgl/index.js';
 import { GPUTimer} from './utils/gputimer.js';
+import { addSlider } from './ui/slider.js';
+import { isMobile } from './utils/device.js';
 
 window.mdxishState = {
     startTime: new Date(),
@@ -63,19 +65,8 @@ return false;
 };
 }
 
-import { addSlider } from './ui/slider.js';
 
 
-const isMobile = (() => {
-return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-|| (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-})();
-
-if (isMobile) {
-const inp = document.createElement("input");
-const inpCon = document.querySelector("#mobile-input");
-inpCon.appendChild(inp);
-}
 
 const vertexShader = `
 in vec2 vUv;
