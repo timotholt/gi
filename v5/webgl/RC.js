@@ -3,6 +3,8 @@ import { GPUTimer } from '../utils/gputimer.js';
 import { addSlider } from '../ui/slider.js';
 import rc_fragment from "../shaders/rc_shader.js";
 import { onBuildReload } from './ReloadShaders.js';
+import { urlParams } from '../main.js';
+import { isMobile } from '../utils/device.js';
 
 // @run
 class RC extends GradientField {

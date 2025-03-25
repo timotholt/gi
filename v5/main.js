@@ -16,6 +16,7 @@ import DistanceField from './webgl/DistanceField.js';
 import GradientField from './webgl/GradientField.js';
 import NaiveRaymarchGi from './webgl/NaiveRaymarchGi.js';
 import rc_fragment from "./shaders/rc_shader.js";
+import RC from './webgl/RC.js';
 
 window.mdxishState = {
     startTime: new Date(),
@@ -44,6 +45,8 @@ gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 //============
 
 const urlParams = new URLSearchParams(window.location.search);
+export { urlParams };
+
 const widthString = urlParams.get('width');
 const heightString = urlParams.get('height');
 const dp = urlParams.get('pixelRatio') ?? 1.0;
