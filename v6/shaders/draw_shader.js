@@ -13,6 +13,11 @@ uniform bool drawing;
 uniform bool indicator;
 uniform float character;
 
+// Constants from constants.js
+const float CHAR_PIXEL_SIZE = 8.0;
+const float GRID_SIZE = 16.0;
+const float TEXTURE_SIZE = 128.0;
+
 const bool randomness = false;
 
 in vec2 vUv;
@@ -27,28 +32,24 @@ float coef = scale;
 
 vec4 current = randomness ? vec4(0) : textureLod(inputTexture, vUv, 0.0);
 if (drawing || randomness) {
-// Calculate the grid size (assuming 16x16 grid)
-const float GRID_SIZE = 16.0;
+// Calculate the grid size
 vec2 guv = vUv - 0.5 / GRID_SIZE;
 
 // Calculate the grid position (0 to 15 in both x and y)
 vec2 gridPos = floor(guv * GRID_SIZE);
 
-// Calculate the position within the 8x8 character
-vec2 charPos = fract(guv * GRID_SIZE) * 8.0;
+// Calculate the position within the character
+vec2 charPos = fract(guv * GRID_SIZE) * CHAR_PIXEL_SIZE;
 
 // Mouse pos
 vec2 mouseUv = from / resolution;
 vec2 mouseGridPos = floor((mouseUv - 0.5 / GRID_SIZE) * GRID_SIZE);
 
-// debugging
-//    float mouseChar = mouseGridPos.y * 16.0 + mouseGridPos.x;
-
 float ch = character;
 
 if (randomness) {
   if (mod(gridPos.x, 2.0) == 0.0 && mod(gridPos.y, 2.0) == 0.0) {
-      ch = floor(rand(gridPos * time / 100.0) * 128.0);
+      ch = floor(rand(gridPos * time / 100.0) * TEXTURE_SIZE);
   } else {
       ch = 0.0;
   }
@@ -57,8 +58,8 @@ if (randomness) {
 // Calculate the UV coordinates for the texture
 // Inverted y-axis
 vec2 uv = vec2(
-(mod(ch, GRID_SIZE) * 8.0 + charPos.x) / 128.0,
-((15.0 - floor(ch / GRID_SIZE)) * 8.0 + charPos.y) / 128.0
+(mod(ch, GRID_SIZE) * CHAR_PIXEL_SIZE + charPos.x) / TEXTURE_SIZE,
+((15.0 - floor(ch / GRID_SIZE)) * CHAR_PIXEL_SIZE + charPos.y) / TEXTURE_SIZE
 );
 
 if (randomness || gridPos == mouseGridPos) {
