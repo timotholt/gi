@@ -26,15 +26,6 @@ vUv = uv;
 gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;
 
-
-
-    //=========
-
-// Draw shader
-import draw_shader from "./shaders/draw_shader.js";
-//======
-
-
 //======
 
 import volumetric_rc_fragment from "./shaders/volumetric_rc_fragment_shader.js";
