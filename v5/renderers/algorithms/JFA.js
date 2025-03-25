@@ -196,4 +196,6 @@ class JFA extends Drawing {
     this.renderer.setRenderTarget(null);
     this.jfaRender();
     }
-    }
+}
+
+export { JFA };
