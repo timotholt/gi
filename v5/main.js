@@ -1,6 +1,7 @@
 // @run
 
 import { WebGL2MicroLayer, Pass, Pipeline, RenderTarget } from './webgl/index.js';
+import { VolumetricRC, NaiveRaymarchGi, RC } from './renderers/index.js';
 
 window.mdxishState = {
     startTime: new Date(),
@@ -180,4 +181,3 @@ canvasScale: rcScale / dp
 }
 
 //===========
-

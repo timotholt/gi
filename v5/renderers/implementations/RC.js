@@ -1,3 +1,6 @@
+import { GradientField } from '../algorithms/GradientField.js';
+import { GPUTimer } from '../../core/GPUTimer.js';
+
 class RC extends GradientField {
     innerInitialize() {
     this.lastRequest = Date.now();

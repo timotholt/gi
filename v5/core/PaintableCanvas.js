@@ -1,20 +1,16 @@
-
-// @run
-
 class PaintableCanvas {
     constructor({width, height, initialColor = 'transparent', radius = 6, friction = 0.2}) {
-    
-    this.isDrawing = false;
-    this.currentMousePosition = { x: 0, y: 0 };
-    this.lastPoint = { x: 0, y: 0 };
-    this.currentPoint = { x: 0, y: 0 };
-    
-    this.mouseMoved = false;
-    this.currentColor = {r: 255, g: 255, b: 255, a: 255};
-    this.RADIUS = radius;
-    this.FRICTION = friction;
-    this.width = width;
-    this.height = height;
+        this.isDrawing = false;
+        this.currentMousePosition = { x: 0, y: 0 };
+        this.lastPoint = { x: 0, y: 0 };
+        this.currentPoint = { x: 0, y: 0 };
+        
+        this.mouseMoved = false;
+        this.currentColor = {r: 255, g: 255, b: 255, a: 255};
+        this.RADIUS = radius;
+        this.FRICTION = friction;
+        this.width = width;
+        this.height = height;
     
     this.initialColor = initialColor;
     
@@ -199,4 +195,5 @@ class PaintableCanvas {
     stage: pass,
     };
 }
-    
+
+export { PaintableCanvas };

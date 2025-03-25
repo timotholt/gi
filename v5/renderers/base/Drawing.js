@@ -1,3 +1,5 @@
+import { BaseSurface } from './BaseSurface.js';
+
 // @run
 class Drawing extends BaseSurface {
     initializeSmoothSurface() {
@@ -186,3 +188,4 @@ class Drawing extends BaseSurface {
     }
 }
 
+export { Drawing };

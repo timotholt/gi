@@ -1,3 +1,4 @@
+import { GradientField } from '../algorithms/GradientField.js';
 
 // @run
 class NaiveRaymarchGi extends GradientField {

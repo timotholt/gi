@@ -1,3 +1,5 @@
+import { Drawing } from '../base/Drawing.js';
+import { GPUTimer } from '../../core/GPUTimer.js';
 
 class VolumetricRC extends Drawing {
     innerInitialize() {

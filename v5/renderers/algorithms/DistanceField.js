@@ -1,4 +1,5 @@
-// @run
+import { JFA } from './JFA.js';
+
 class DistanceField extends JFA {
     innerInitialize() {
     super.innerInitialize();

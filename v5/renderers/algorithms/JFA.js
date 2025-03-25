@@ -1,3 +1,5 @@
+import { Drawing } from '../base/Drawing.js';
+
 // @run
 class JFA extends Drawing {
     innerInitialize() {

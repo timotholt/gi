@@ -1,4 +1,5 @@
-// @run
+import { DistanceField } from './DistanceField.js';
+
 class GradientField extends DistanceField {
     innerInitialize() {
     super.innerInitialize();

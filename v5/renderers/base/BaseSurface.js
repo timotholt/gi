@@ -145,3 +145,5 @@ class BaseSurface {
     })
     }
 }
+
+export { BaseSurface };
